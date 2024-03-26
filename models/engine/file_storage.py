@@ -5,27 +5,29 @@
 import json
 import os
 import models
-from models.base_model import BaseModel 
+from models.base_model import BaseModel
 from models.user import User
 from models.amenity import Amenity
 from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
+
+
 class FileStorage:
     """FileStorage Class : manipulate dictionary save and reload"""
     __file_path = 'file.json'
     __objects = {}
-    
+
     def all(self):
         """return the dictionary objects"""
         return self.__objects
-            
+
     def new(self, obj):
         """set a key to obj"""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.__objects[key] = obj
-        
+
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         json_object = {}
@@ -34,7 +36,7 @@ class FileStorage:
 
         with open(self.__file_path, 'w') as f:
             json.dump(json_object, f)
-    
+
     def reload(self):
         """deserializes __objects to the JSON file (path: __file_path)"""
         classes = {
@@ -54,4 +56,3 @@ class FileStorage:
                     if name in classes:
                         obj = classes[name](**v)
                         self.__class__.__objects[k] = obj
-    

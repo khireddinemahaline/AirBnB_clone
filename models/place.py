@@ -3,10 +3,12 @@
 
 
 from models.base_model import BaseModel
+
+
 class Place(BaseModel):
     """Place Class"""
     city_id: str = ''
-    user_id: str = '' 
+    user_id: str = ''
     name: str = ''
     description: str = ''
     number_room: int = 0
