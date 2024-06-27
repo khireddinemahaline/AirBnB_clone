@@ -56,3 +56,5 @@ class FileStorage:
                     if name in classes:
                         obj = classes[name](**v)
                         self.__class__.__objects[k] = obj
+        else:
+            pass
