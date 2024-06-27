@@ -49,12 +49,11 @@ class FileStorage:
             "Review": Review
         }
         try:
-            with open(self.__file_path, "r") as f:
+            with open(self.__file_path, 'r', encoding="utf8") as f:
                 obj_dict = json.load(f)
-                for k, v in obj_dict.items():
-                    name = k.split('.')[0]
-                    if name in classes:
-                        obj = classes[name](**v)
-                        self.__class__.__objects[k] = obj
+            for obj_item in obj_dict.values():
+                class_name = obj_item["__class__"]
+                del obj_item["__class__"]
+                self.new(eval(class_name)(**obj_item))
         except FileNotFoundError:
-            print("OK")
+            pass
