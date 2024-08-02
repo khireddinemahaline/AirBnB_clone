@@ -1,41 +1,46 @@
-# AirBnb Console Project:
-## First Step : The console
-1. creat data model
-2. manage (create, update, destroy, etc..) via the console
-3. store and presist objects to (json file)
-## description of the project
-Serialization and deserialization are two important concepts in programming that allow objects to be easily stored, transmitted, and reconstructed. They’re used in various scenarios, such as storing objects in a database, sending objects over a network, or caching objects in memory
-#### Files and Directory 
-
-AirBnB_clone : the main reposotry for the project
-	models : directory containt all classes and module files (object/instance)
-		- base_model.py : file contain the base class of all our module
-			* attributes : id , created_at , update_at
-			* methods : save() , to_json()  
-	test   : directory contain all unit test file 
-	models/engine : diectory will contain all storage class  
-		- file_storage.py (only one file for this project)
-	
-	= console.py >>> file the entry point of our comand interpreter
-
-## description of the command interpreter: 
-
-start console.py so you could manipilate with interpreter
-#### What's a command interpreter?
-
-Do you remember the Shell? It's exactly the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:
-
-    Create a new object (ex: a new User or a new City)
-    Retrieve an object from a file
-    Do operations on objects (create, destroy, all, etc...)
-    Update attributes of an object
-
--- you could start your command interpreter in tow way 
-1. interactive mode
-guillaume@ubuntu:~/AirBnB$ python3 -m unittest discover tests
-
-2. non-interactive mode:
-guillaume@ubuntu:~/AirBnB$ echo "python3 -m unittest discover tests" | bash
-
+# Airbnb Clone Project
+### 1. Project Overview
+AirBnB Clone (the console) is the first in the serious of projects to wards a full stack AirBnB web application. This repo contains a console application that can be used to manage the various instances of class used in the AirBnB web application.
+### 2. Project Phases
+* Command Interpreter: Serving as the foundation, the command interpreter allows for data manipulation without a graphical interface, akin to a Shell environment. This phase is pivotal, providing developers with a platform for iterative development and debugging.
+* Website (Frontend): The face of the final product, the website showcases static and dynamic content to users, offering an experience tailored to their needs.
+* Data Storage: Whether through databases or files, this phase ensures the seamless storage and retrieval of crucial data objects, facilitating efficient information management.
+* API Development: Acting as the bridge between the frontend and data storage, the API enables communication and interaction, empowering users to retrieve, create, delete, and update data seamlessly.
+### 3. Tools and framwork
+- python programming language -> devlope the backend of the website
+- cmd module -> devlope the console.py file to interact with website using command line
+- json module -> store data in json file
+- ORM (sqlalchemy) library -> store data in database
+- DBMS (mysql server) -> the database that handel the data in it
+- Flask python framwork -> handel requeste response of website on the server
+- API -> work as the linked betwen the frontend and the backend part
+### 4. Architacteur
+/test
+/test_models
+    /engine
+    __init__.py
+    test_file_storage.py
+    test_db_storage.db
+    __init__.py
+    test_basemodel.py
+    test_user.py
+    test_city.py
+    test_state.py
+    test_place.py
+    test_review.py
+    test_amenity.py
+/models
+    __init__.py
+    /engine
+        __init__.py
+        db_storage.py
+        file_storage.py
+    basemodel.py # all inhert from this class (id, calss_name, dic)
+    user.py # user credantial
+    city.py # the city to search for
+    state.py # states in the cities
+    place.py # places in states
+    review.py # review and feadback
+    amenity.py 
 
 

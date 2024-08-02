@@ -1,15 +1,8 @@
 #!/usr/bin/env python3
 """consle.py
 ----to start the file : ./console.py"""
-
-
+from models import storage
 from models.base_model import BaseModel
-from models.user import User
-from models.amenity import Amenity
-from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
 import cmd
 import models
 import shlex
@@ -93,27 +86,22 @@ class HBNBCommand(cmd.Cmd):
         return
 
     def do_all(self, args):
+        """ Shows all objects, or all objects of a class"""
         """show all instance"""
-        arg = shlex.split(args)
-        list_all = []
-        dic = models.storage.all()
-        if len(arg) == 0:
-            for key in dic:
-                class_represntation = str(dic[key])
-                list_all.append(class_represntation)
-            print(list_all)
-            return
-        if arg[0] not in models.classes:
-            print("** class doesn't exist **")
-            return
+        print_list = []
+
+        if args:
+            args = args.split(' ')[0]  # remove possible trailing args
+            if args not in models.classes:
+                print("** class doesn't exist **")
+                return
+            for k, v in storage.all(args).items():
+                if k.split('.')[0] == args:
+                    print_list.append(str(v))
         else:
-            for key in dic:
-                class_name = key.split('.')
-                if class_name[0] == arg[0]:
-                    class_represntation = str(dic[key])
-                    list_all.append(class_represntation)
-            print(list_all)
-        return
+            for k, v in storage.all(args).items():
+                print_list.append(str(v))
+        print('[%s]' % ', '.join(print_list))  # Fixed syntax error
 
     def do_update(self, args):
         """Updates an instance based on the class name and id """
