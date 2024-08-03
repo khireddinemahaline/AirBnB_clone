@@ -15,32 +15,32 @@ AirBnB Clone (the console) is the first in the serious of projects to wards a fu
 - Flask python framwork -> handel requeste response of website on the server
 - API -> work as the linked betwen the frontend and the backend part
 ### 4. Architacteur
-/test
-/test_models
-    /engine
-    __init__.py
-    test_file_storage.py
-    test_db_storage.db
-    __init__.py
-    test_basemodel.py
-    test_user.py
-    test_city.py
-    test_state.py
-    test_place.py
-    test_review.py
-    test_amenity.py
-/models
-    __init__.py
-    /engine
-        __init__.py
-        db_storage.py
-        file_storage.py
-    basemodel.py # all inhert from this class (id, calss_name, dic)
-    user.py # user credantial
-    city.py # the city to search for
-    state.py # states in the cities
-    place.py # places in states
-    review.py # review and feadback
-    amenity.py 
+- `/test`
+ - /test_models
+    - /engine
+        - __init__.py
+        - test_file_storage.py
+        - test_db_storage.db
+    - __init__.py
+    - test_basemodel.py
+    - test_user.py
+    - test_city.py
+    - test_state.py
+    - test_place.py
+    - test_review.py
+    - test_amenity.py
+- `/models`
+    - __init__.py
+    - /engine
+        - __init__.py
+        - db_storage.py
+        - file_storage.py
+    - basemodel.py # all inhert from this class (id, calss_name, dic)
+    - user.py # user credantial
+    - city.py # the city to search for
+    - state.py # states in the cities
+    - place.py # places in states
+    - review.py # review and feadback
+    - amenity.py 
 
 
