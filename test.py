@@ -1,7 +1,27 @@
-#!/usr/bin/env python3
-create State name="California"
-create State name="Arizona"
-all State
+#!/usr/bin/python3
+from models import storage
+from models.base_model import BaseModel
+from models.user import User
 
-create Place city_id="0001" user_id="0001" name="My_little_house" number_rooms=4 number_bathrooms=2 max_guest=10 price_by_night=300 latitude=37.773972 longitude=-122.431297
-all Place
+all_objs = storage.all()
+print("-- Reloaded objects --")
+for obj_id in all_objs.keys():
+    obj = all_objs[obj_id]
+    print(obj)
+
+print("-- Create a new User --")
+my_user = User()
+my_user.first_name = "Betty"
+my_user.last_name = "Bar"
+my_user.email = "airbnb@mail.com"
+my_user.password = "root"
+my_user.save()
+print(my_user)
+
+print("-- Create a new User 2 --")
+my_user2 = User()
+my_user2.first_name = "John"
+my_user2.email = "airbnb2@mail.com"
+my_user2.password = "root"
+my_user2.save()
+print(my_user2)
